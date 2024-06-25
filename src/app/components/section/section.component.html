@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Computer Equipment Summary Report</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Branch</th>
+        <th>CPU+Monitor</th>
+        <th>CPU</th>
+        <th>Monitor</th>
+        <th>Laptop</th>
+        <th>Server</th>
+        <th>UPS</th>
+        <th>Online UPS</th>
+        <th>Document Scanner</th>
+        <th>Router</th>
+        <th>Switch</th>
+        <th>IP Phone</th>
+        <th>POS Printer</th>
+        <th>Projector</th>
+        <th>SMART TV</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let branch of branchAssets">
+        <td>{{ branch.name }}</td>
+        <td>{{ branch.cpuMonitor }}</td>
+        <td>{{ branch.cpu }}</td>
+        <td>{{ branch.monitor }}</td>
+        <td>{{ branch.laptop }}</td>
+        <td>{{ branch.server }}</td>
+        <td>{{ branch.ups }}</td>
+        <td>{{ branch.onlineUps }}</td>
+        <td>{{ branch.documentScanner }}</td>
+        <td>{{ branch.router }}</td>
+        <td>{{ branch.switch }}</td>
+        <td>{{ branch.ipPhone }}</td>
+        <td>{{ branch.posPrinter }}</td>
+        <td>{{ branch.projector }}</td>
+        <td>{{ branch.smartTv }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

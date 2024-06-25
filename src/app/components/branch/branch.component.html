@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Branches</h2>
+
+  <form (ngSubmit)="createBranch()" class="form">
+    <div class="form-group">
+      <label for="branchName">Branch Name:</label>
+      <input type="text" id="branchName" [(ngModel)]="newBranch.name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" [(ngModel)]="newBranch.location" name="location" required>
+    </div>
+    <div class="form-group">
+      <label for="numberOfEmployees">Number of Employees:</label>
+      <input type="number" id="numberOfEmployees" [(ngModel)]="newBranch.numberOfEmployees" name="numberOfEmployees" required>
+    </div>
+    <button type="submit" class="btn">Add Branch</button>
+  </form>
+
+  <ul class="list">
+    <li *ngFor="let branch of branches" class="list-item">
+      <span>{{ branch.name }} - {{ branch.location }} - {{ branch.numberOfEmployees }}</span>
+      <button (click)="editBranch(branch)" class="btn btn-warning">Edit</button>
+      <button (click)="deleteBranch(branch._id)" class="btn btn-danger">Delete</button>
+    </li>
+  </ul>
+
+  <div *ngIf="editingBranch" class="edit-form">
+    <h3>Edit Branch</h3>
+    <form (ngSubmit)="updateBranch()" class="form">
+      <div class="form-group">
+        <label for="editBranchName">Branch Name:</label>
+        <input type="text" id="editBranchName" [(ngModel)]="editingBranch.name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="editLocation">Location:</label>
+        <input type="text" id="editLocation" [(ngModel)]="editingBranch.location" name="location" required>
+      </div>
+      <div class="form-group">
+        <label for="editNumberOfEmployees">Number of Employees:</label>
+        <input type="number" id="editNumberOfEmployees" [(ngModel)]="editingBranch.numberOfEmployees" name="numberOfEmployees" required>
+      </div>
+      <button type="submit" class="btn">Update Branch</button>
+      <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+    </form>
+  </div>
+</div>

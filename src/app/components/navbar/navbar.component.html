@@ -1,0 +1,44 @@
+
+
+  <header class="bg-blue-500 text-white p-4 flex justify-between items-center">
+    <div class="text-xl font-bold">My App</div>
+    <div class="md:hidden">
+      <button (click)="toggleNav()" class="focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <nav [ngClass]="{'hidden': !navOpen, 'block': navOpen}" class="w-full md:flex md:items-center md:w-auto">
+      <ul class="flex flex-col md:flex-row md:space-x-4 mt-4 md:mt-0">
+        <li><a  class="block py-2 px-4">Sign Out</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <div class="flex h-screen">
+    <div class="w-48 bg-slate-700">
+      <ul class="text-white">
+        <!-- <li><a routerLink="/" routerLinkActive="font-bold" class="block py-2 px-4">Home</a></li>
+        <li><a routerLink="/item-list" routerLinkActive="font-bold" class="block py-2 px-4">About</a></li> -->
+        <li><a routerLink="/branch-list" routerLinkActive="font-bold" class="block py-2 px-4">BRANCH</a></li>
+      </ul>
+      <ul class="text-white">
+        <!-- <li><a routerLink="/" routerLinkActive="font-bold" class="block py-2 px-4">Home</a></li>
+        <li><a routerLink="/item-list" routerLinkActive="font-bold" class="block py-2 px-4">About</a></li> -->
+        <li><a routerLink="/equipment" routerLinkActive="font-bold" class="block py-2 px-4">Equipment</a></li>
+      </ul>
+      <ul class="text-white">
+        <!-- <li><a routerLink="/" routerLinkActive="font-bold" class="block py-2 px-4">Home</a></li>
+        <li><a routerLink="/item-list" routerLinkActive="font-bold" class="block py-2 px-4">About</a></li> -->
+        <li><a routerLink="/sections" routerLinkActive="font-bold" class="block py-2 px-4">Section</a></li>
+      </ul>
+    </div>
+  
+    <div class="flex-1 bg-slate-100">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
+

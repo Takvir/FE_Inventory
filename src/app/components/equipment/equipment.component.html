@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Add Asset to Section</h2>
+
+  <form (ngSubmit)="addAsset()" class="form">
+    <div class="form-group">
+      <label for="sectionSelect">Section:</label>
+      <select id="sectionSelect" [(ngModel)]="newAsset.sectionId" name="sectionId" required>
+        <option *ngFor="let section of sections" [value]="section._id">{{ section.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="branchSelect">Branch:</label>
+      <select id="branchSelect" [(ngModel)]="newAsset.branch" name="branch" required>
+        <option *ngFor="let branch of branches" [value]="branch._id">{{ branch.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="assetName">Asset Name:</label>
+      <select id="assetName" [(ngModel)]="newAsset.assetName" name="assetName" required>
+        <option *ngFor="let assetName of assetNames" [value]="assetName">{{ assetName }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cost">Cost:</label>
+      <input type="number" id="cost" [(ngModel)]="newAsset.cost" name="cost" required>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" [(ngModel)]="newAsset.quantity" name="quantity" required>
+    </div>
+    <button type="submit" class="btn">Add Asset</button>
+  </form>
+</div>
