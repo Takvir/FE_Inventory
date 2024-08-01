@@ -1,40 +1,69 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs';
+interface Asset {
+  id: number;
+  branch_id: number;
+  branch_name: string;
+  group_id: number;
+  desktop_name: string;
+  configuration: string;
+  tag_name: string;
+  warranty: string;
+  price: number;
+  purchase_date: string;
+  status: string;
+  asset_get_by: string;
+  serial_number: string;
+}
+
+export interface Asset2 {
+  asset_id: number;
+  branch_id: number;
+  branch_name: string;
+  group_id: number;
+  group_name: string;
+  desktop_name: string;
+  configuration: string;
+  tag_name: string;
+  warranty: string;
+  price: number;
+  purchase_date: Date;
+  status: string;
+  asset_get_by: string;
+  serial_number: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SectionService {
-  private apiUrl = 'http://localhost:3000/api/sections';
+  private apiUrl = 'http://localhost:3000/api/assets';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getSections(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getAssets(): Observable<Asset[]> {
+    return this.http.get<Asset[]>(this.apiUrl);
   }
 
-  getSection(id: string): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<any>(url);
+  getAsset(id: number): Observable<Asset> {
+    return this.http.get<Asset>(`${this.apiUrl}/${id}`);
   }
 
-  createSection(section: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, section);
+  addAsset(asset: Asset): Observable<Asset> {
+    return this.http.post<Asset>(this.apiUrl, asset);
   }
 
-  updateSection(id: string, section: any): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.put<any>(url, section);
+  updateAsset(id: number, asset: Asset): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, asset);
   }
 
-  deleteSection(id: string): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<any>(url);
+  deleteAsset(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  addAssetToSection(sectionId: string, asset: any): Observable<any> {
-    const url = `${this.apiUrl}/${sectionId}/assets`;
-    return this.http.post<any>(url, asset);
+  getAssetsByBranchAndGroup(branchId: number, groupId: number): Observable<Asset2[]> {
+    return this.http.get<Asset2[]>(`${this.apiUrl}/branch/${branchId}/group/${groupId}`);
   }
+
 }

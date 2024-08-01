@@ -1,47 +1,66 @@
-<div class="container">
-  <h2>Branches</h2>
 
-  <form (ngSubmit)="createBranch()" class="form">
-    <div class="form-group">
-      <label for="branchName">Branch Name:</label>
-      <input type="text" id="branchName" [(ngModel)]="newBranch.name" name="name" required>
-    </div>
-    <div class="form-group">
-      <label for="location">Location:</label>
-      <input type="text" id="location" [(ngModel)]="newBranch.location" name="location" required>
-    </div>
-    <div class="form-group">
-      <label for="numberOfEmployees">Number of Employees:</label>
-      <input type="number" id="numberOfEmployees" [(ngModel)]="newBranch.numberOfEmployees" name="numberOfEmployees" required>
-    </div>
-    <button type="submit" class="btn">Add Branch</button>
-  </form>
+<!-- branch.component.html -->
+<h2>Add Branch</h2>
+<button mat-button (click)="openAddBranchDialog()">Add Branch</button>
 
-  <ul class="list">
-    <li *ngFor="let branch of branches" class="list-item">
-      <span>{{ branch.name }} - {{ branch.location }} - {{ branch.numberOfEmployees }}</span>
-      <button (click)="editBranch(branch)" class="btn btn-warning">Edit</button>
-      <button (click)="deleteBranch(branch._id)" class="btn btn-danger">Delete</button>
-    </li>
-  </ul>
+<!-- Display Branches -->
 
-  <div *ngIf="editingBranch" class="edit-form">
-    <h3>Edit Branch</h3>
-    <form (ngSubmit)="updateBranch()" class="form">
-      <div class="form-group">
-        <label for="editBranchName">Branch Name:</label>
-        <input type="text" id="editBranchName" [(ngModel)]="editingBranch.name" name="name" required>
+
+
+<!-- Modal Template for Adding Branch -->
+<ng-template #addBranchDialog>
+  <h2 mat-dialog-title>Add Branch</h2>
+  <mat-dialog-content>
+    <form [formGroup]="branchForm" (ngSubmit)="submitBranchForm()">
+      <div>
+        <mat-form-field>
+          <mat-label>Branch Name</mat-label>
+          <input matInput formControlName="branch_name" required>
+        </mat-form-field>
       </div>
-      <div class="form-group">
-        <label for="editLocation">Location:</label>
-        <input type="text" id="editLocation" [(ngModel)]="editingBranch.location" name="location" required>
+      <div>
+        <mat-form-field>
+          <mat-label>Number of Employees</mat-label>
+          <input matInput type="number" formControlName="number_of_employees" required>
+        </mat-form-field>
       </div>
-      <div class="form-group">
-        <label for="editNumberOfEmployees">Number of Employees:</label>
-        <input type="number" id="editNumberOfEmployees" [(ngModel)]="editingBranch.numberOfEmployees" name="numberOfEmployees" required>
+      <div mat-dialog-actions>
+        <button mat-button type="button" (click)="closeDialog()">Cancel</button>
+        <button mat-button type="submit">Add Branch</button>
       </div>
-      <button type="submit" class="btn">Update Branch</button>
-      <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
     </form>
+  </mat-dialog-content>
+</ng-template>
+
+<h2>Branch List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Number of Employees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let branch of branches">
+      <td>{{ branch.branch_id }}</td>
+      <td>{{ branch.branch_name }}</td>
+      <td>{{ branch.number_of_employees }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- <h2>Add Branch</h2>
+<form (ngSubmit)="addBranch()">
+  <div>
+    <label for="branch_name">Branch Name:</label>
+    <input type="text" id="branch_name" [(ngModel)]="branch.branch_name" name="branch_name" required>
   </div>
-</div>
+  <div>
+    <label for="number_of_employees">Number of Employees:</label>
+    <input type="number" id="number_of_employees" [(ngModel)]="branch.number_of_employees" name="number_of_employees" required>
+  </div>
+  <button type="submit">Add Branch</button>
+</form> -->
+

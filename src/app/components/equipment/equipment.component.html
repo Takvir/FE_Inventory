@@ -1,33 +1,72 @@
-<div class="container">
-  <h2>Add Asset to Section</h2>
+<div class="asset-container">
+  <form [formGroup]="assetForm" (ngSubmit)="onSubmit()">
+    <!-- <div>
+      <label for="branch_id">Branch ID:</label>
+      <input id="branch_id" formControlName="branch_id">
+    </div> -->
 
-  <form (ngSubmit)="addAsset()" class="form">
     <div class="form-group">
-      <label for="sectionSelect">Section:</label>
-      <select id="sectionSelect" [(ngModel)]="newAsset.sectionId" name="sectionId" required>
-        <option *ngFor="let section of sections" [value]="section._id">{{ section.name }}</option>
+      <label for="branch_id">Branch:</label>
+      <select formControlName="branch_id" id="branch_id" class="form-control" (change)="onBranchChange($event)" required>
+        <option *ngFor="let branch of branches" [value]="branch.branch_id">{{ branch.branch_name }}</option>
       </select>
     </div>
+
     <div class="form-group">
-      <label for="branchSelect">Branch:</label>
-      <select id="branchSelect" [(ngModel)]="newAsset.branch" name="branch" required>
-        <option *ngFor="let branch of branches" [value]="branch._id">{{ branch.name }}</option>
+      <label for="branch_name">Branch Name:</label>
+      <input id="branch_name" formControlName="branch_name" class="form-control" readonly>
+    </div>
+
+    <!-- <div>
+      <label for="group_id">Group ID:</label>
+      <input id="group_id" formControlName="group_id">
+    </div> -->
+
+    <div class="form-group">
+      <label for="group_id">Group:</label>
+      <select formControlName="group_id" id="group_id" class="form-control" required>
+        <option *ngFor="let group of groups" [value]="group.group_id">{{ group.group_name }}</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="assetName">Asset Name:</label>
-      <select id="assetName" [(ngModel)]="newAsset.assetName" name="assetName" required>
-        <option *ngFor="let assetName of assetNames" [value]="assetName">{{ assetName }}</option>
-      </select>
+
+
+    <div>
+      <label for="desktop_name">Desktop Name:</label>
+      <input id="desktop_name" formControlName="desktop_name">
     </div>
-    <div class="form-group">
-      <label for="cost">Cost:</label>
-      <input type="number" id="cost" [(ngModel)]="newAsset.cost" name="cost" required>
+    <div>
+      <label for="configuration">Configuration:</label>
+      <input id="configuration" formControlName="configuration">
     </div>
-    <div class="form-group">
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" [(ngModel)]="newAsset.quantity" name="quantity" required>
+    <div>
+      <label for="tag_name">Tag Name:</label>
+      <input id="tag_name" formControlName="tag_name">
     </div>
-    <button type="submit" class="btn">Add Asset</button>
+    <div>
+      <label for="warranty">Warranty:</label>
+      <input id="warranty" formControlName="warranty">
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input id="price" formControlName="price">
+    </div>
+    <div>
+      <label for="purchase_date">Purchase Date:</label>
+      <input id="purchase_date" formControlName="purchase_date" type="date">
+    </div>
+    <div>
+      <label for="status">Status:</label>
+      <input id="status" formControlName="status">
+    </div>
+    <div>
+      <label for="asset_get_by">Asset Get By:</label>
+      <input id="asset_get_by" formControlName="asset_get_by">
+    </div>
+    <div>
+      <label for="serial_number">Serial Number:</label>
+      <input id="serial_number" formControlName="serial_number">
+    </div>
+    <button type="submit">{{ isEdit ? 'Update Asset' : 'Add Asset' }}</button>
   </form>
-</div>
+
+  

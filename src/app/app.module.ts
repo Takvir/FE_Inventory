@@ -23,7 +23,10 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { BranchComponent } from './components/branch/branch.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
-import { SectionComponent } from './components/section/section.component';
+import { AssetAllComponent } from './components/asset-all/asset-all.component';
+import { AssetBranchComponent } from './components/asset-branch/asset-branch.component';
+
+
 
 
 @NgModule({
@@ -36,7 +39,11 @@ import { SectionComponent } from './components/section/section.component';
   
     BranchComponent,
     EquipmentComponent,
-    SectionComponent,
+    AssetAllComponent,
+    AssetBranchComponent,
+
+
+
    
   ],
   imports: [

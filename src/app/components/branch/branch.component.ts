@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { BranchService } from 'src/app/services/branch/branch.service';
-import { Branch } from 'src/app/modal/branch.model';
+
 import { FormBuilder, Validators ,FormGroup} from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-branch',
@@ -10,10 +11,22 @@ import { FormBuilder, Validators ,FormGroup} from '@angular/forms';
 })
 export class BranchComponent implements OnInit {
   branches: any[] = [];
-  newBranch: any = { name: '', location: '', numberOfEmployees: 0 };
-  editingBranch: any = null;
+  branchForm!: FormGroup;
 
-  constructor(private branchService: BranchService) {}
+  @ViewChild('addBranchDialog')
+  addBranchDialog!: TemplateRef<any>;
+  branch = {
+    branch_name: '',
+    number_of_employees: 0
+  };
+  
+
+  constructor(private branchService: BranchService,private dialog: MatDialog, private fb: FormBuilder) {
+    this.branchForm = this.fb.group({
+      branch_name: ['', Validators.required],
+      number_of_employees: [0, Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.loadBranches();
@@ -22,36 +35,24 @@ export class BranchComponent implements OnInit {
   loadBranches(): void {
     this.branchService.getBranches().subscribe(data => {
       this.branches = data;
+      console.log(data);
     });
   }
 
-  createBranch(): void {
-    this.branchService.createBranch(this.newBranch).subscribe(() => {
-      this.loadBranches();
-      this.newBranch = { name: '', location: '', numberOfEmployees: 0 };
-    });
+  openAddBranchDialog(): void {
+    this.dialog.open(this.addBranchDialog);
   }
 
-  editBranch(branch: any): void {
-    this.editingBranch = { ...branch };
+  closeDialog(): void {
+    this.dialog.closeAll();
   }
 
-  updateBranch(): void {
-    if (this.editingBranch) {
-      this.branchService.updateBranch(this.editingBranch._id, this.editingBranch).subscribe(() => {
+  submitBranchForm(): void {
+    if (this.branchForm.valid) {
+      this.branchService.createBranch(this.branchForm.value).subscribe(() => {
         this.loadBranches();
-        this.editingBranch = null;
+        this.closeDialog();
       });
     }
-  }
-
-  deleteBranch(id: string): void {
-    this.branchService.deleteBranch(id).subscribe(() => {
-      this.loadBranches();
-    });
-  }
-
-  cancelEdit(): void {
-    this.editingBranch = null;
   }
 }

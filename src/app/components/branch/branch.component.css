@@ -1,65 +1,46 @@
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .btn {
-    padding: 10px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-  }
-  
-  .list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f8f9fa;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  
-  .list-item span {
-    margin-right: 10px;
-  }
-  
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+
+form {
+  max-width: 400px;
+  margin: auto;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

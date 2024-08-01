@@ -1,0 +1,41 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Branch ID</th>
+        <th>Branch Name</th>
+        <th>Group ID</th>
+        <th>Desktop Name</th>
+        <th>Configuration</th>
+        <th>Tag Name</th>
+        <th>Warranty</th>
+        <th>Price</th>
+        <th>Purchase Date</th>
+        <th>Status</th>
+        <th>Asset Get By</th>
+        <th>Serial Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let asset of assets">
+        <td>{{ asset.id }}</td>
+        <td>{{ asset.branch_id }}</td>
+        <td>{{ asset.branch_name }}</td>
+        <td>{{ asset.group_id }}</td>
+        <td>{{ asset.desktop_name }}</td>
+        <td>{{ asset.configuration }}</td>
+        <td>{{ asset.tag_name }}</td>
+        <td>{{ asset.warranty }}</td>
+        <td>{{ asset.price }}</td>
+        <td>{{ asset.purchase_date }}</td>
+        <td>{{ asset.status }}</td>
+        <td>{{ asset.asset_get_by }}</td>
+        <td>{{ asset.serial_number }}</td>
+        <!-- <td>
+          <button (click)="onEdit(asset)">Edit</button>
+          <button (click)="onDelete(asset.id)">Delete</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>

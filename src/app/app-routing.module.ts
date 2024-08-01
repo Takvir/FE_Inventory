@@ -4,14 +4,20 @@ import { HomeComponent } from './components/home/home.component';
 
 import { BranchComponent } from './components/branch/branch.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
-import { SectionComponent } from './components/section/section.component';
+import { AssetAllComponent } from './components/asset-all/asset-all.component';
+import { AssetBranchComponent } from './components/asset-branch/asset-branch.component';
+
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
 
   { path: 'branch-list', component: BranchComponent  },
   { path: 'equipment', component: EquipmentComponent  },
-  { path: 'sections', component: SectionComponent  }
+  { path: 'all-asset', component: AssetAllComponent  },
+  { path: 'branch-asset', component: AssetBranchComponent  },
+
+
 ];
 
 @NgModule({
