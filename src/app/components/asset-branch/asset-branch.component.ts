@@ -44,7 +44,6 @@ export class AssetBranchComponent implements OnInit {
   branches: Branch[] = [];
   groups: Group[] = [];
   assets: Asset[] = [];
-
   assetForm!: FormGroup;
 
 
@@ -58,6 +57,7 @@ export class AssetBranchComponent implements OnInit {
 
     this.loadBranches();
     this.loadGroups();
+    // this.loadAssetsByBranch()
   }
   loadBranches(): void {
     this.branchService.getBranches().subscribe((data: Branch[]) => {
@@ -75,17 +75,24 @@ export class AssetBranchComponent implements OnInit {
     });
   }
 
+
+
   loadAssets(): void {
     const { branchId, groupId } = this.assetForm.value;
     if (branchId && groupId) {
       this.assetService.getAssetsByBranchAndGroup(branchId, groupId).subscribe((data: Asset[]) => {
         this.assets = data;
-        console.log(this.assets);
-        
+      });
+    } else if (branchId) {
+      this.assetService.getAssetsByBranch(branchId).subscribe((data: Asset[]) => {
+        this.assets = data;
+      });
+    } else if (groupId) {
+      this.assetService.getAssetsByGroup(groupId).subscribe((data: Asset[]) => {
+        this.assets = data;
       });
     }
   }
-
 
 
 }

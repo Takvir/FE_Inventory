@@ -1,46 +1,94 @@
-table {
+/* Container padding for the whole page */
+.container {
+  padding: 16px;
+}
+
+/* Styling for the Add Branch button */
+button[mat-raised-button] {
+  background-color: #003d03; /* Green color */
+  color: white;
+  padding: 1px 30px;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* Styling for the table */
+.branch-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 16px;
+  padding: 16px; /* Padding around the table */
+  border: 1px solid #ddd; /* Border for the table */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
-th, td {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
+/* Header styling */
+.branch-table thead th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: center; /* Center align text */
+  padding: 12px;
+  border-bottom: 2px solid #ddd;
+  border-right: 1px solid #ddd; /* Border on the right side of header cells */
 }
 
-th {
-  background-color: #f4f4f4;
+/* Cell styling */
+.branch-table tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd; /* Border below each cell */
+  border-right: 1px solid #ddd; /* Border on the right side of cells */
+  text-align: center; /* Center align text */
+  word-wrap: break-word; /* Ensure long words break into multiple lines */
 }
 
-
-form {
-  max-width: 400px;
-  margin: auto;
+/* Remove border for the last column in each row */
+.branch-table tbody tr td:last-child {
+  border-right: none;
 }
 
-div {
-  margin-bottom: 10px;
+/* Remove border for the last row */
+.branch-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+/* Alternate row coloring */
+.branch-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-input {
+/* Adjust the width of the Serial No. column */
+.branch-table thead th:nth-child(1),
+.branch-table tbody td:nth-child(1) {
+  width: 80px; /* Adjust as needed */
+}
+
+/* Form field styling */
+.mat-form-field {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  margin-bottom: 16px;
 }
 
-button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
+/* Styling for the Branch List heading */
+
+
+/* Simple styling for the Branch List heading */
+.branch-heading {
+  text-align: center; /* Center the text */
+  font-size: 24px; /* Font size */
+  font-weight: bold; /* Make the font bold */
+  margin: 20px 0; /* Space above and below the heading */
+  border-bottom: 2px solid #c2c2c2; /* Underline color and thickness */
+  padding-bottom: 10px; /* Space between text and underline */
 }
 
-button:hover {
-  background-color: #0056b3;
+.mat-dialog-content {
+  max-width: 800px; /* Increase the width as needed */
+  width: 100%; /* Ensures the modal uses most of the viewport width */
+}
+
+.mat-dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
 }

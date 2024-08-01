@@ -1,66 +1,51 @@
+<div class="container">
 
-<!-- branch.component.html -->
-<h2>Add Branch</h2>
-<button mat-button (click)="openAddBranchDialog()">Add Branch</button>
+  <h1 class="branch-heading">Branch List</h1>
+  <button mat-raised-button color="primary" (click)="openAddBranchDialog()">Add Branch</button>
 
-<!-- Display Branches -->
-
-
-
-<!-- Modal Template for Adding Branch -->
-<ng-template #addBranchDialog>
-  <h2 mat-dialog-title>Add Branch</h2>
-  <mat-dialog-content>
-    <form [formGroup]="branchForm" (ngSubmit)="submitBranchForm()">
-      <div>
-        <mat-form-field>
-          <mat-label>Branch Name</mat-label>
-          <input matInput formControlName="branch_name" required>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <mat-label>Number of Employees</mat-label>
-          <input matInput type="number" formControlName="number_of_employees" required>
-        </mat-form-field>
-      </div>
-      <div mat-dialog-actions>
-        <button mat-button type="button" (click)="closeDialog()">Cancel</button>
-        <button mat-button type="submit">Add Branch</button>
-      </div>
-    </form>
-  </mat-dialog-content>
-</ng-template>
-
-<h2>Branch List</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Number of Employees</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let branch of branches">
-      <td>{{ branch.branch_id }}</td>
-      <td>{{ branch.branch_name }}</td>
-      <td>{{ branch.number_of_employees }}</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Modal Template for Adding Branch -->
+  <ng-template #addBranchDialog>
+    <h2 mat-dialog-title>Add Branch</h2>
+    <mat-dialog-content>
+      <form [formGroup]="branchForm" (ngSubmit)="submitBranchForm()">
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Branch Name</mat-label>
+            <input matInput formControlName="branch_name" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Branch ID</mat-label>
+            <input matInput type="number" formControlName="number_of_employees" required>
+          </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeDialog()">Cancel</button>
+          <button mat-raised-button color="primary" type="submit">Add Branch</button>
+        </div>
+      </form>
+    </mat-dialog-content>
+  </ng-template>
 
 
-<!-- <h2>Add Branch</h2>
-<form (ngSubmit)="addBranch()">
-  <div>
-    <label for="branch_name">Branch Name:</label>
-    <input type="text" id="branch_name" [(ngModel)]="branch.branch_name" name="branch_name" required>
-  </div>
-  <div>
-    <label for="number_of_employees">Number of Employees:</label>
-    <input type="number" id="number_of_employees" [(ngModel)]="branch.number_of_employees" name="number_of_employees" required>
-  </div>
-  <button type="submit">Add Branch</button>
-</form> -->
 
+  <h3 style="color: rgb(2, 21, 105); font-weight: 500;">Total Branches: {{ totalBranches }}</h3>
+
+  <table class="branch-table">
+    <thead>
+      <tr>
+        <th>S. No.</th>
+        <th>Name</th>
+        <th>Branch ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let branch of branches; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ branch.branch_name }}</td>
+        <td>{{ branch.number_of_employees }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

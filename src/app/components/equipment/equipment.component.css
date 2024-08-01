@@ -1,78 +1,85 @@
+/* Styling for the container */
 .asset-container {
-  max-width: 800px;
-  margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  max-width: 1300px; /* Adjust the width of the form container */
+  margin: 0 auto; /* Center the form container horizontally */
+  border: 1px solid #ddd; /* Light border around the container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff; /* White background for the container */
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+/* Form heading */
+.form-heading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
   margin-bottom: 20px;
+  color: #333;
 }
 
-form div {
-  margin-bottom: 10px;
+/* Flexbox for form rows */
+.form-row {
+  display: flex;
+  justify-content: space-between; /* Space between columns */
+  margin-bottom: 15px; /* Space between rows */
 }
 
+/* Form group styling */
+.form-group {
+  flex: 1; /* Each form group takes equal space */
+  margin-right: 15px; /* Space between form groups */
+}
+
+.form-group:last-child {
+  margin-right: 0; /* Remove margin for the last element */
+}
+
+/* Label styling */
 label {
-  margin-right: 10px;
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-input {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
+/* Form control styling */
+.form-control {
+  width: 100%; /* Full width */
   padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding in width */
 }
 
-button:hover {
-  background-color: #218838;
+/* Select styling */
+select.form-control {
+  height: 40px; /* Consistent height */
 }
 
-table {
+/* Button styling */
+.submit-button {
+  display: block;
   width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
   padding: 10px;
-  border: 1px solid #ccc;
-  text-align: left;
+  background-color: #4CAF50; /* Green background */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-th {
-  background-color: #f2f2f2;
+.submit-button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
 
-tbody tr:hover {
-  background-color: #f1f1f1;
+.branch-heading {
+  text-align: center; /* Center the text */
+  font-size: 24px; /* Font size */
+  font-weight: bold; /* Make the font bold */
+  margin: 10px 0; /* Space above and below the heading */
+  border-bottom: 2px solid #c2c2c2; /* Underline color and thickness */
+  padding-bottom: 10px; /* Space between text and underline */
 }
 
-.actions button {
-  margin-right: 5px;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.actions button:hover {
-  background-color: #0056b3;
-}
-
-.actions .delete {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.actions .delete:hover {
-  background-color: #c82333;
-}

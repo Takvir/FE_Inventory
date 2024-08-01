@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class BranchComponent implements OnInit {
   branches: any[] = [];
   branchForm!: FormGroup;
+  totalBranches: number = 0;
 
   @ViewChild('addBranchDialog')
   addBranchDialog!: TemplateRef<any>;
@@ -35,6 +36,7 @@ export class BranchComponent implements OnInit {
   loadBranches(): void {
     this.branchService.getBranches().subscribe(data => {
       this.branches = data;
+      this.totalBranches = this.branches.length;
       console.log(data);
     });
   }

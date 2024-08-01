@@ -66,4 +66,11 @@ export class SectionService {
     return this.http.get<Asset2[]>(`${this.apiUrl}/branch/${branchId}/group/${groupId}`);
   }
 
+  getAssetsByBranch(branchId: number): Observable<Asset2[]> {
+    return this.http.get<Asset2[]>(`${this.apiUrl}/branch/${branchId}`);
+  }
+  getAssetsByGroup(groupId: number): Observable<Asset2[]> {
+    return this.http.get<Asset2[]>(`${this.apiUrl}/group/${groupId}`);
+  }
+
 }
